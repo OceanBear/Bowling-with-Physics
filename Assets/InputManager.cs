@@ -27,11 +27,10 @@ public class InputManager : MonoBehaviour
         {
             input += Vector2.right;
         }
-        OnMove?.Invoke(input);
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             OnResetPressed?.Invoke();
         }
+        OnMove?.Invoke(input);
     }
 }
