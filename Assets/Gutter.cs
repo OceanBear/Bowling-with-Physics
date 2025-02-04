@@ -15,7 +15,8 @@ public class Gutter : MonoBehaviour
     }
     private void OnTriggerEnter(Collider triggeredBody)
     {
-        Debug.Log("Ball entered the gutter!");
+        //Debug.Log("Ball entered the gutter!");
+        if (!triggeredBody.CompareTag("Ball")) return;
         //first get the rigidbody of the ball
         //store it in a local variable ballRigidBody
         Rigidbody ballRigidBody = triggeredBody.GetComponent<Rigidbody>();
