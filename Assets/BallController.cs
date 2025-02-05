@@ -19,12 +19,10 @@ public class BallController : MonoBehaviour
         ballRB = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         inputManager.OnSpacePressed.AddListener(LaunchBall);
-        //inputManager.OnSpacePressed.AddListener(Resetball);
         //transform.parent = ballAnchor;
         //transform.localPosition = Vector3.zero;
         ballRB.isKinematic = true;
         Debug.Log($"BallAnchor: {ballAnchor}");
-        //ResetBall();
     }
 
     // Update is called once per frame
@@ -49,10 +47,14 @@ public class BallController : MonoBehaviour
     {
         isBallLaunched = false;
         //Setting the ball to be a Kinematic Body
+        transform.position = ballAnchor.position;
+        transform.rotation = ballAnchor.rotation;
+        ballRB.linearVelocity = Vector3.zero;   //set speed to zero
+        ballRB.angularVelocity = Vector3.zero;
+
         ballRB.isKinematic = true;
         launchIndicator.gameObject.SetActive(true);
         transform.parent = ballAnchor;
-        //transform.localPosition = Vector3.zero;
     }
 
 }

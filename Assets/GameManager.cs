@@ -4,42 +4,44 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float score = 0;
-    /*
     [SerializeField] private BallController ball;
     [SerializeField] private GameObject pinCollection;
     [SerializeField] private Transform pinAnchor;
     [SerializeField] private InputManager inputManager;
-    */
-
     [SerializeField] private TextMeshProUGUI scoreText;
-    private FallTrigger[] pins;
+    private FallTrigger[] fallTriggers;
     private GameObject pinObjects;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Start()
     {
+        inputManager.OnResetPressed.AddListener(HandleReset);   // listen to reset
+        SetPins();
         // Find all objects of type FallTrigger
-        
+        /*
         pins = FindObjectsByType<FallTrigger>(FindObjectsSortMode.None);
         foreach(FallTrigger pin in pins)
         {
             pin.OnPinFall.AddListener(IncrementScore);
         }
-         
+         */
+
         //inputManager.OnResetPressed.AddListener(HandleReset);
         //SetPins();
     }
 
-    /*
+    
     private void HandleReset()
     {
+        Debug.Log("Resetting the game ...");
         ball.ResetBall();
+        score = 0;
+        scoreText.text = $"Score: {score}";
         SetPins();
     }
-     */
 
-    /*
-         private void SetPins()
+
+    private void SetPins()
     {
         if (pinObjects)
         {
@@ -57,7 +59,6 @@ public class GameManager : MonoBehaviour
             pin.OnPinFall.AddListener(IncrementScore);
         }
     }
-     */
 
     private void IncrementScore()
     {
