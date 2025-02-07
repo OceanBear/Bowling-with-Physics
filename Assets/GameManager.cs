@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Resetting the game ...");
         ball.ResetBall();
-        score = 0;
+        //score = 0;
         scoreText.text = $"Score: {score}";
         SetPins();
     }
